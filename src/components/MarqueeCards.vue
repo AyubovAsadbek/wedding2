@@ -52,37 +52,58 @@
 }
 </style>
 
-<script setup>
-defineProps({
-  className: {
-    type: String,
-    default: "",
+<script lang="ts">
+import { defineComponent } from "vue";
+import type { PropType } from "vue";
+
+interface Card {
+  id: number;
+  image: string;
+}
+
+export interface MarqueeCardsProps {
+  className?: string;
+}
+
+export const MarqueeCards = defineComponent({
+  name: "MarqueeCards",
+  props: {
+    className: {
+      type: String as PropType<string>,
+      default: "",
+    },
+  },
+  setup(props: MarqueeCardsProps) {
+    const cards: Card[] = [
+      {
+        id: 1,
+        image: "/card1.svg",
+      },
+      {
+        id: 2,
+        image: "/card2.svg",
+      },
+      {
+        id: 3,
+        image: "/card1.svg",
+      },
+      {
+        id: 4,
+        image: "/card2.svg",
+      },
+      {
+        id: 5,
+        image: "/card1.svg",
+      },
+      {
+        id: 6,
+        image: "/card2.svg",
+      },
+    ];
+
+    return { cards };
   },
 });
-const cards = [
-  {
-    id: 1,
-    image: "/card1.svg",
-  },
-  {
-    id: 2,
-    image: "/card2.svg",
-  },
-  {
-    id: 3,
-    image: "/card1.svg",
-  },
-  {
-    id: 4,
-    image: "/card2.svg",
-  },
-  {
-    id: 5,
-    image: "/card1.svg",
-  },
-  {
-    id: 6,
-    image: "/card2.svg",
-  },
-];
+
+export default MarqueeCards;
 </script>

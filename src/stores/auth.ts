@@ -109,7 +109,7 @@ export const useAuthStore = defineStore("auth", {
           this.isAuthenticated = true;
 
           localStorage.setItem("auth_token", this.token as string);
-
+          
           router.push("/");
         } else {
           throw new Error("Token not found in the login response.");
@@ -126,7 +126,7 @@ export const useAuthStore = defineStore("auth", {
       this.userInfo = null;
       this.phoneNumber = null;
       this.otpCode = null;
-      localStorage.removeItem("auth_token");
+      localStorage.removeItem('auth_token');
     },
 
     async checkAuthentication() {

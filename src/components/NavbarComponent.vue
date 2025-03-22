@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 import { RouterLink } from "vue-router";
 import { Icon } from "@iconify/vue";
@@ -7,6 +7,7 @@ import { useAuthStore } from "@/stores/auth";
 export default defineComponent({
   components: { Icon, RouterLink },
   data() {
+    const authStore = useAuthStore();
     return {
       isOpen: false,
       links: [
@@ -15,7 +16,8 @@ export default defineComponent({
         { label: "Тарифы", to: "/user2" },
         { label: "Контакты", to: "/contacts" },
       ],
-      isAuthenticated: useAuthStore.isAuthenticated,
+      isAuthenticated: authStore.isAuthenticated,
+      authStore,
     };
   },
   methods: {
@@ -26,7 +28,7 @@ export default defineComponent({
       }
     },
     logOut() {
-      useAuthStore.isAuthenticated = false;
+      this.authStore.logout();
     },
   },
 });
