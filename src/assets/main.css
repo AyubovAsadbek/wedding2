@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  cursor: none !important;
+}
+
+*:focus {
+  outline: 2px solid #f8c6df;
+}
+
+button:hover {
+  @apply bg-LightRed !important;
+  @apply text-white !important;
+}
+
+button:active {
+  @apply bg-DarkRed !important;
+  @apply text-white !important;
+}
+
+button:disabled {
+  @apply bg-Grey !important;
+  @apply text-white !important;
+}
+
+input:focus {
+  @apply outline-none !important;
+}
+textarea:focus {
+  @apply outline-none !important;
+}
